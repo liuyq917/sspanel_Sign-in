@@ -28,6 +28,8 @@ jobs:
       run: |
         pip install -r requirements.txt
         
+     - name: Run
+      run: |       
         web='${{ secrets.WEB }}'
         user='${{ secrets.USER }}'
         pwd='${{ secrets.PWD }}'
