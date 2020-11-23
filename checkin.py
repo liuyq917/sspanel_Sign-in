@@ -16,27 +16,28 @@ class SspanelQd(object):
     def __init__(self):
         # 机场地址
         self.base_url = input()
+        print(self.base_url)
         # 登录信息
         self.email = input()
         self.password = input()
         # Server酱推送（可空）
-        self.sckey = input()
+        self.sckey = ''
         # 酷推qq推送（可空）
-        self.ktkey = input()
+        self.ktkey = ''
 
     def checkin(self):
-        msgall = ''
-        for i in range(len(self.base_url)):
+       # msgall = ''
+      #  for i in range(len(self.base_url)):
 
-            email = self.email[i].split('@')
+            email = self.email.split('@')
             email = email[0] + '%40' + email[1]
-            password = self.password[i]
+            password = self.password
 
             session = requests.session()
 
-            session.get(self.base_url[i], verify=False)
+            session.get(self.base_url, verify=False)
 
-            login_url = self.base_url[i] + '/auth/login'
+            login_url = self.base_url + '/auth/login'
             headers = {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36',
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -51,13 +52,13 @@ class SspanelQd(object):
                 'Referer': self.base_url[i] + '/user'
             }
 
-            response = session.post(self.base_url[i] + '/user/checkin', headers=headers, verify=False)
+            response = session.post(self.base_url + '/user/checkin', headers=headers, verify=False)
             msg = (response.json()).get('msg')
             
-            msgall = msgall + self.base_url[i] + '\n\n' + msg + '\n\n'
+            msgall = msgall + self.base_url + '\n\n' + msg + '\n\n'
             print(msg)
 
-            info_url = self.base_url[i] + '/user'
+            info_url = self.base_url + '/user'
             response = session.get(info_url, verify=False)
             """
             以下只适配了editXY主题
