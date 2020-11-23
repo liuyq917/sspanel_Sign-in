@@ -34,7 +34,7 @@ jobs:
         sckey='${{ secrets.SCKEY }}'
         ktkey='${{ secrets.KTKEY }}'
         
-        do
+        
         python3 checkin.py <<EOF
         ${web}
         ${user}
@@ -42,4 +42,4 @@ jobs:
         ${sckey}
         ${ktkey}
         EOF
-        done
+        
