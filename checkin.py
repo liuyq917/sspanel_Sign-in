@@ -7,17 +7,17 @@ requests.packages.urllib3.disable_warnings()
 class SspanelQd(object):
     def __init__(self):
         # 机场地址
-        str = "https://www.paofu.cloud,https://youyun777.net,https://sakura.kozow.com,https://www.paofu.cloud,https://aco.monster"
+        str = input()
         self.base_url = str.split(',')
         # 登录信息
-        str = "vx1999@163.com,vx1999@163.com,liuyq917@gmail.com,liuyq917@gmail.com,liuyq917@gmail.com"
+        str = input()
         self.email = str.split(',')
-        str = "Xxkjb2005,QAZwsx123789,amy070712,amy070712,amy070712"
+        str = input()
         self.password = str.split(',')
         # Server酱推送（可空）
-        self.sckey = 'SCU83542T3da0c18f6db3ad01569ca64ab6607f425e4756d1b08c4'
+        self.sckey = input()
         # 酷推qq推送（可空）
-        self.ktkey = ''
+        self.ktkey = input()
 
     def checkin(self):
         msgall = ''
