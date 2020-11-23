@@ -49,7 +49,7 @@ class SspanelQd(object):
 
             headers = {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36',
-                'Referer': self.base_url[i] + '/user'
+                'Referer': self.base_url + '/user'
             }
 
             response = session.post(self.base_url + '/user/checkin', headers=headers, verify=False)
@@ -111,13 +111,3 @@ if __name__ == '__main__':
 
 
 
-#我爱破解签到（cookies版）
-cookie= 'Hm_lvt_46d556462595ed05e05f009cdafff31a=1578708851; htVD_2132_saltkey=R9JzvMYH; htVD_2132_lastvisit=1578705254; htVD_2132_ulastactivity=1578708892%7C0; htVD_2132_auth=3f67GtHpIkfYL%2BEjVY0nRcx5ZrnpARnNE12ecjvKurhmyoYuBF%2FNkVYMfbaenxPZWfPaPxvMKTVnmW9kSuqoEFHEXtc; htVD_2132_lip=115.171.83.85%2C1578708892; htVD_2132_connect_is_bind=0; htVD_2132_seccode=1347768.0d02af85bff8ce59e3; htVD_2132_nofavfid=1; htVD_2132_ttask=853307%7C20200111; htVD_2132_lastact=1578709369%09home.php%09spacecp; htVD_2132_lastcheckfeed=853307%7C1578709369; htVD_2132_checkfollow=1; htVD_2132_checkpm=1; Hm_lpvt_46d556462595ed05e05f009cdafff31a=1578709373'
-cookies={}#初始化cookies字典变量  
-for line in cookie.split(';'):   #按照字符：进行划分读取  
-    #其设置为1就会把字符串拆分成2份  
-    name,value=line.strip().split('=',1)  
-    cookies[name]=value  #为字典cookies添加内容  
-s = requests.Session()
-r = s.get("https://www.52pojie.cn/home.php?mod=task&do=apply&id=2",cookies=cookies)
-r = s.get("https://www.52pojie.cn/home.php?mod=task&do=draw&id=2",cookies=cookies)
