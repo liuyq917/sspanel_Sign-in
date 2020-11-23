@@ -1,0 +1,45 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: 签到
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    - cron: 0 15 * * *
+  watch:
+    types: started
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        
+        web='${{ secrets.WEB }}'
+        user='${{ secrets.USER }}'
+        pwd='${{ secrets.PWD }}'
+        sckey='${{ secrets.SCKEY }}'
+        ktkey='${{ secrets.KTKEY }}'
+        
+        do
+        python3 checkin.py <<EOF
+        ${web}
+        ${user}
+        ${pwd}
+        ${sckey}
+        ${ktkey}
+        EOF
+        done
