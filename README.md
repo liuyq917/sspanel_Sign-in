@@ -1,6 +1,8 @@
 # Sign-in
 每日机场自动签到
 
+根据 https://github.com/ne-21/sspanel-automaticcheckin 代码修改，不支持需要人机验证的机场。
+
 首先fork本项目到自己的仓库
 
 进入自己fork的仓库，点击 Settings-> Secrets-> New Secrets 添加以下5个Secrets。
