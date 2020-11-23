@@ -8,6 +8,6 @@
 
 base_url = input()
 
-print(str(base_url)).encode("utf-8"))
+print(str(base_url).encode("utf-8"))
 
 
