@@ -7,31 +7,31 @@ requests.packages.urllib3.disable_warnings()
 class SspanelQd(object):
     def __init__(self):
         # 机场地址
-        str = input()
+        str = "https://www.paofu.cloud,https://youyun777.net,https://sakura.kozow.com,https://www.paofu.cloud,https://aco.monster"
         self.base_url = str.split(',')
         # 登录信息
-        str = input()
+        str = "vx1999@163.com,vx1999@163.com,liuyq917@gmail.com,liuyq917@gmail.com,liuyq917@gmail.com"
         self.email = str.split(',')
-        str = input
+        str = "Xxkjb2005,QAZwsx123789,amy070712,amy070712,amy070712"
         self.password = str.split(',')
         # Server酱推送（可空）
-        self.sckey = input()
+        self.sckey = 'SCU83542T3da0c18f6db3ad01569ca64ab6607f425e4756d1b08c4'
         # 酷推qq推送（可空）
-        self.ktkey = input()
+        self.ktkey = ''
 
     def checkin(self):
-      #  msgall = ''
-      #  for i in range(len(self.base_url)):
+        msgall = ''
+        for i in range(len(self.base_url)):
 
-            email = self.email.split('@')
+            email = self.email[i].split('@')
             email = email[0] + '%40' + email[1]
-            password = self.password
+            password = self.password[i]
 
             session = requests.session()
 
-            session.get(self.base_url, verify=False)
+            session.get(self.base_url[i], verify=False)
 
-            login_url = self.base_url + '/auth/login'
+            login_url = self.base_url[i] + '/auth/login'
             headers = {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36',
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -43,21 +43,19 @@ class SspanelQd(object):
 
             headers = {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36',
-                'Referer': self.base_url + '/user'
+                'Referer': self.base_url[i] + '/user'
             }
 
-            response = session.post(self.base_url + '/user/checkin', headers=headers, verify=False)
+            response = session.post(self.base_url[i] + '/user/checkin', headers=headers, verify=False)
             msg = (response.json()).get('msg')
             
-       #     msgall = msgall + self.base_url[i] + '\n\n' + msg + '\n\n'
+            msgall = msgall + self.base_url[i] + '\n\n' + msg + '\n\n'
             print(msg)
 
-            info_url = self.base_url + '/user'
+            info_url = self.base_url[i] + '/user'
             response = session.get(info_url, verify=False)
-            return msg
 
-
-   #     return msgall
+        return msgall
         
     # Server酱推送
     def server_send(self, msg):
@@ -91,4 +89,3 @@ def main_handler(event, context):
 if __name__ == '__main__':
     run = SspanelQd()
     run.main()
-
