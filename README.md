@@ -13,6 +13,6 @@ USER    签到机场登陆邮箱,与网站对应,多个用户用英文逗号分�
 
 PWD     签到机场登陆密码,与网站对应,多个用户用英文逗号分割。
 
-SCKEY   微信推送SCKEY码，详情参见http://sc.ftqq.com/
+SCKEY   可选设置，微信推送SCKEY码，详情参见http://sc.ftqq.com/
 
-KTKEY   QQ推送Skey码，详情参见https://cp.xuthus.cc/
+KTKEY   可选设置，QQ推送Skey码，详情参见https://cp.xuthus.cc/
