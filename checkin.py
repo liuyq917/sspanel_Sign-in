@@ -6,7 +6,7 @@
 #Motto:Another me.
 #sspanel自动每日签到脚本，基于项目https://github.com/zhjc1124/ssr_autocheckin修改
 
-self.base_url = input()
-print(self.base_url)
+base_url = input()
+print(base_url)
 
 
