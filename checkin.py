@@ -55,7 +55,7 @@ class SspanelQd(object):
             response = session.post(self.base_url + '/user/checkin', headers=headers, verify=False)
             msg = (response.json()).get('msg')
             
-            msgall = msgall + self.base_url + '\n\n' + msg + '\n\n'
+            #msgall = msgall + self.base_url + '\n\n' + msg + '\n\n'
             print(msg)
             
 
