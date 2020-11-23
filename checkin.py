@@ -19,7 +19,9 @@ class SspanelQd(object):
         print(self.base_url)
         # 登录信息
         self.email = input()
+        print(self.email)
         self.password = input()
+        print(self.password)
         # Server酱推送（可空）
         self.sckey = ''
         # 酷推qq推送（可空）
