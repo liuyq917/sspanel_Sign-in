@@ -7,10 +7,13 @@ requests.packages.urllib3.disable_warnings()
 class SspanelQd(object):
     def __init__(self):
         # 机场地址
-        self.base_url = input()
+        str = input()
+        self.base_url = str.split(',')
         # 登录信息
-        self.email = input()
-        self.password = input()
+        str = input()
+        self.email = str.split(',')
+        str = input
+        self.password = str.split(',')
         # Server酱推送（可空）
         self.sckey = input()
         # 酷推qq推送（可空）
