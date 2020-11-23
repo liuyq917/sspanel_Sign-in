@@ -57,6 +57,7 @@ class SspanelQd(object):
             
             msgall = msgall + self.base_url + '\n\n' + msg + '\n\n'
             print(msg)
+            
 
             info_url = self.base_url + '/user'
             response = session.get(info_url, verify=False)
@@ -72,7 +73,8 @@ class SspanelQd(object):
              except:
                 print(msg)
             """
-        return msgall
+            return msg
+        #return msgall
         
     # Server酱推送
     def server_send(self, msg):
