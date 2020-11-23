@@ -15,14 +15,14 @@ requests.packages.urllib3.disable_warnings()
 class SspanelQd(object):
     def __init__(self):
         # 机场地址
-        self.base_url = [input()]
+        self.base_url = input()
         # 登录信息
-        self.email = ['vx1999@163.com','vx1999@163.com','liuyq917@gmail.com','liuyq917@gmail.com','liuyq917@gmail.com']
-        self.password = ['Xxkjb2005','QAZwsx123789','amy070712','amy070712','amy070712']
+        self.email = input()
+        self.password = input()
         # Server酱推送（可空）
-        self.sckey = ''
+        self.sckey = input()
         # 酷推qq推送（可空）
-        self.ktkey = ''
+        self.ktkey = input()
 
     def checkin(self):
         msgall = ''
