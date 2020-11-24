@@ -36,11 +36,4 @@ jobs:
         ktkey='${{ secrets.KTKEY }}'
         
         
-        python3 checkin.py <<EOF
-        ${web}
-        ${user}
-        ${pwd}
-        ${sckey}
-        ${ktkey}
-        EOF
-        
+        python3 checkin.py
