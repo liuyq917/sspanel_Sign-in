@@ -1,5 +1,6 @@
 import requests
 import re
+import os
 
 requests.packages.urllib3.disable_warnings()
 
@@ -7,17 +8,17 @@ requests.packages.urllib3.disable_warnings()
 class SspanelQd(object):
     def __init__(self):
         # 机场地址
-        str = input()
-        self.base_url = str.split(',')
+        weblist = os.environ['web']
+        self.base_url = weblist.split(',')
         # 登录信息
-        str = input()
-        self.email = str.split(',')
-        str = input()
-        self.password = str.split(',')
+        userlist = os.environ['user']
+        self.email = userlist.split(',')
+        passlist = os.environ['pwd']
+        self.password = passlist.split(',')
         # Server酱推送（可空）
-        self.sckey = input()
+        self.sckey = os.environ['sckey']
         # 酷推qq推送（可空）
-        self.ktkey = input()
+        self.ktkey = os.environ['ktkey']
 
     def checkin(self):
         msgall = ''
