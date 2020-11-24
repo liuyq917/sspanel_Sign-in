@@ -28,12 +28,12 @@ jobs:
       run: |
         pip install -r requirements.txt
         
- 
-        web='${{ secrets.WEB }}'
-        user='${{ secrets.USER }}'
-        pwd='${{ secrets.PWD }}'
-        sckey='${{ secrets.SCKEY }}'
-        ktkey='${{ secrets.KTKEY }}'
+      env:
+        web: ${{ secrets.WEB }}
+        user: ${{ secrets.USER }}
+        pwd: ${{ secrets.PWD }}
+        sckey: ${{ secrets.SCKEY }}
+        ktkey: ${{ secrets.KTKEY }}
         
         
         python3 checkin.py
