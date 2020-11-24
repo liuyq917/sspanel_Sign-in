@@ -25,15 +25,12 @@ jobs:
       with:
         python-version: 3.7
     - name: Run
-      run: |
-        pip install -r requirements.txt
-        
       env:
         web: ${{ secrets.WEB }}
         user: ${{ secrets.USER }}
         pwd: ${{ secrets.PWD }}
         sckey: ${{ secrets.SCKEY }}
         ktkey: ${{ secrets.KTKEY }}
-        
-        
+      run: |
+        pip install -r requirements.txt
         python3 checkin.py
