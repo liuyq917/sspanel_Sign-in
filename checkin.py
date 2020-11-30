@@ -30,7 +30,26 @@ class SspanelQd(object):
 
             session = requests.session()
 
-            session.get(self.base_url[i], verify=False)
+            try:
+                #以下except都是用来捕获当requests请求出现异常时，
+                # 通过捕获然后等待网络情况的变化，以此来保护程序的不间断运行
+                session.get(self.base_url[i], verify=False)  
+
+            except requests.exceptions.ConnectionError:
+                msg = self.base_url[i] + '\n\n' + '网络不通'
+                msgall = msgall + self.base_url[i] + '\n\n' + msg + '\n\n'
+                print(msg)
+                continue
+            except requests.exceptions.ChunkedEncodingError:
+                msg = self.base_url[i] + '\n\n' + '分块编码错误'
+                msgall = msgall + self.base_url[i] + '\n\n' + msg + '\n\n'
+                print(msg)
+                continue   
+            except:
+                msg = self.base_url[i] + '\n\n' + '未知错误'
+                msgall = msgall + self.base_url[i] + '\n\n' + msg + '\n\n'
+                print(msg)
+                continue
 
             login_url = self.base_url[i] + '/auth/login'
             headers = {
