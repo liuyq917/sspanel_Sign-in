@@ -100,7 +100,31 @@ class SspanelQd(object):
         msg = self.checkin()
         self.server_send(msg)
         self.kt_send(msg)
+        
+     #PUSHPLSH推送
+    def push_plus(self, msg):
+         if not PUSHPLUS:
+              # print("pushplus推送的PUSHPLUS未设置!!\n取消推送")
+              return
+         push_plus_url = "http://www.pushplus.plus/send"
+         params = {
+              "token": PUSHPLUS,
+              "title": self,
+              "content": msg,
+              "template": "markdown"
+         }
+    res = requests.post(url=push_plus_url, params=params)
+    if res.status_code == 200:
+        print("pushplus推送成功!")
+    else:
+        print("pushplus推送失败!")
 
+
+            
+            
+            
+            
+            
 # 云函数入口
 def main_handler(event, context):
     run = SspanelQd()
