@@ -19,6 +19,8 @@ class SspanelQd(object):
         self.sckey = os.environ['sckey']
         # 酷推qq推送（可空）
         self.ktkey = os.environ['ktkey']
+        #push
+        self.push= os.environ['push']
 
     def checkin(self):
         msgall = ''
@@ -102,13 +104,13 @@ class SspanelQd(object):
         self.kt_send(msg)
         
      #PUSHPLSH推送
-    def push_plus(self, msg):
-         if not PUSHPLUS:
+    def push_send(self, msg):
+         if not PUSH:
               # print("pushplus推送的PUSHPLUS未设置!!\n取消推送")
               return
          push_plus_url = "http://www.pushplus.plus/send"
          params = {
-              "token": PUSHPLUS,
+              "token": PUSH,
               "title": self,
               "content": msg,
               "template": "markdown"
